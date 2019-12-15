@@ -1,6 +1,6 @@
 # `Items` CRUD RESTful API
 
-This is a NestJS application I built while following Brad Traversy's **awesome** crash course on the technology, which you can find [here](https://www.youtube.com/watch?v=wqhNoDE6pb4&t=1514s).
+This is a NestJS application I built while following Brad Traversy's **awesome** crash course on the technology, which you can find [here](https://www.youtube.com/watch?v=wqhNoDE6pb4).
 
 I also documented the steps I took to get to the current state (finished ? ? ) of the app by adding screenshots and some comments.
 
