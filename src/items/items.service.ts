@@ -1,34 +1,26 @@
 import { Injectable } from '@nestjs/common'
 import { Item } from './interfaces/item.interface'
 
+import { Model } from 'mongoose'
+import { InjectModel } from '@nestjs/mongoose'
+
 // this annotation will help us use it in the
 // dependency injection system that Nest provides
 // ie. inject it into the controller's constructor method
 @Injectable()
 export class ItemsService {
-  private readonly items: Item[] = [
-    {
-      id: '123ouoidalkj1231',
-      name: 'Item 1',
-      qty: 10
-    },
-    {
-      id: '123ouoidalkj1231_2',
-      name: 'Item 2',
-      qty: 9
-    },
-    {
-      id: '123ouoidalkj1231_3',
-      name: 'Item 3',
-      qty: 4
-    }
-  ]
+  constructor(@InjectModel('Item') private readonly itemModel: Model<Item>) {}
 
-  findAll(): Item[] {
-    return this.items
+  async findAll(): Promise<Item[]> {
+    return await this.itemModel.find()
   }
 
-  findOne(id: string): Item {
-    return this.items.find(item => item.id === id)
+  async findOne(id: string): Promise<Item> {
+    return await this.itemModel.findOne({ _id: id })
+  }
+
+  async create(item: Item): Promise<Item> {
+    const newItem = new this.itemModel(item)
+    return await newItem.save()
   }
 }

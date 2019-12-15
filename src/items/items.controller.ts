@@ -9,7 +9,7 @@ export class ItemsController {
 
   // the Get decorator came from @nestjs/common
   @Get()
-  findAll(): Item[] {
+  async findAll(): Promise<Item[]> {
     return this.itemsService.findAll()
   }
 
@@ -20,13 +20,13 @@ export class ItemsController {
   //   }
 
   @Get(':id')
-  findOne(@Param('id') id): Item {
+  async findOne(@Param('id') id): Promise<Item> {
     return this.itemsService.findOne(id)
   }
 
   @Post()
-  createItem(@Body() createItemDto: CreateItemDto): string {
-    return `Name: ${createItemDto.name} \b Description: ${createItemDto.description}`
+  createItem(@Body() createItemDto: CreateItemDto): Promise<Item> {
+    return this.itemsService.create(createItemDto)
   }
 
   @Delete(':id')
