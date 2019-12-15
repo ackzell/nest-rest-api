@@ -1,6 +1,10 @@
 {
-    "editor.fontFamily": "'Cascadia Code', Monaco, 'Courier New', monospace",
-    "terminal.integrated.fontFamily": "'Anonymous Pro'",
-    "terminal.integrated.fontSize": 22,
-    "editor.formatOnSave": true
+  "editor.fontFamily": "'Cascadia Code', Monaco, 'Courier New', monospace",
+  "terminal.integrated.fontFamily": "'Anonymous Pro'",
+  "terminal.integrated.fontSize": 22,
+  "editor.fontSize": 18,
+  "editor.formatOnSave": true,
+  "editor.hover.enabled": true,
+  "editor.tabSize": 2,
+  "workbench.colorTheme": "Ayu Dark"
 }
