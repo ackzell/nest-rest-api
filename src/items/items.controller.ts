@@ -9,7 +9,7 @@ export class ItemsController {
 
   // the Get decorator came from @nestjs/common
   @Get()
-  async findAll(): Promise<Item[]> {
+  findAll(): Promise<Item[]> {
     return this.itemsService.findAll()
   }
 
@@ -20,7 +20,7 @@ export class ItemsController {
   //   }
 
   @Get(':id')
-  async findOne(@Param('id') id): Promise<Item> {
+  findOne(@Param('id') id): Promise<Item> {
     return this.itemsService.findOne(id)
   }
 
@@ -30,12 +30,15 @@ export class ItemsController {
   }
 
   @Delete(':id')
-  deleteItem(@Param('id') id): string {
-    return `Will delete id ${id}`
+  deleteItem(@Param('id') id): Promise<Item> {
+    return this.itemsService.delete(id)
   }
 
   @Put(':id')
-  updateItem(@Body() updateItemDto: CreateItemDto, @Param('id') id): string {
-    return `Update item ${id} - Name: ${updateItemDto.name}`
+  updateItem(
+    @Body() updateItemDto: CreateItemDto,
+    @Param('id') id
+  ): Promise<Item> {
+    return this.itemsService.update(id, updateItemDto)
   }
 }
